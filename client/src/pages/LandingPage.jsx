@@ -17,7 +17,7 @@ function LandingPage() {
     // Basic validation
     if (displayName.trim() && roomName.trim()) {
       // Navigate to the chat room URL, passing displayName via route state
-      navigate(`/${roomName.trim().toLowerCase().replace(/\s+/g, '-')}`, { // Sanitize room name for URL
+      navigate(`/${roomName.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9_-.]/g, '')}`, { // Sanitize room name for URL
         state: { displayName: displayName.trim() }
       });
     } else {
